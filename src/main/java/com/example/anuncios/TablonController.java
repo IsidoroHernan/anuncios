@@ -15,8 +15,8 @@ public class TablonController {
     private List<Anuncio> anuncios = new ArrayList<>();
 
     public TablonController() {
-        anuncios.add(new Anuncio("Pepe", "Hola caracola", "XXXX"));
-        anuncios.add(new Anuncio("Juan", "Hola caracola", "XXXX"));
+        //anuncios.add(new Anuncio("Pepe", "Hola caracola", "XXXX"));
+        //anuncios.add(new Anuncio("Juan", "Hola caracola", "XXXX"));
     }
 
     @GetMapping("/")
@@ -31,18 +31,22 @@ public class TablonController {
     public String nuevoAnuncio(Model model, Anuncio anuncio) {
 
         anuncios.add(anuncio);
-
         return "anuncio_guardado";
 
     }
 
     @GetMapping("/anuncio/{num}")
-    public String verAnuncio(Model model, @PathVariable int num) {
+    public String verAnuncio(Model model, @PathVariable String num) {
+        Anuncio anuncio = null;
+        try {
+            int number = Integer.valueOf(num);
+            if ((anuncios != null) && (anuncios.size() >= number) && (number > 0)) {
+                anuncio = anuncios.get(number - 1);
+            }
+        } catch (NumberFormatException ex) {
 
-        Anuncio anuncio = anuncios.get(num - 1);
-
+        }
         model.addAttribute("anuncio", anuncio);
-
         return "ver_anuncio";
     }
 }

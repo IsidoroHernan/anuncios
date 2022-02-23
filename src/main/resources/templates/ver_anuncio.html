@@ -5,10 +5,14 @@
     <title>Anuncio completo</title>
 </head>
 <body>
+  {{#anuncio}}
   <p>Nombre: {{anuncio.nombre}}</p>
   <p>Asunto: {{anuncio.asunto}}</p>
   <p>Comentario: {{anuncio.comentario}}</p>
-
+  {{/anuncio}}
+  {{^anuncio}}
+  <p style="color: red">Anuncio inexistente</p>
+  {{/anuncio}}
   <a href="/">Volver al tablón</a>
 </body>
 </html>
