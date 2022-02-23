@@ -9,8 +9,10 @@
     {{#anuncios}}
     <a href="anuncio/{{-index}}">{{nombre}} {{asunto}}</a><br>
     {{/anuncios}}
-
+    {{^anuncios}}
+    <p>No hay anuncios en el tablon</p>
+    {{/anuncios}}
     <br>
-    <a href="nuevoAnuncio.html">Nuevo anuncio</a>
+    <a href="nuevoAnuncio.html">Crear un nuevo anuncio</a>
 </body>
 </html>
